@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ImagePlaceholder from '../../components/ImagePlaceholder.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { services } from '../../data/services';
+
+// Astro builds one page per service in the list.
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+const { service } = Astro.props;
+---
+<Layout title={`${service.title} | BRAND NAME`} description={service.summary}>
+  <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-20 md:grid-cols-2">
+    <div>
+      <h1 class="reveal font-display text-4xl font-bold md:text-5xl">{service.title}</h1>
+      <p class="reveal mt-6 text-lg text-white/70">{service.summary}</p>
+      <ul class="mt-8 space-y-3">
+        {service.bullets.map((b) => <li class="reveal"><span class="text-brand">✓</span> {b}</li>)}
+      </ul>
+    </div>
+    <ImagePlaceholder label={service.title} class="reveal" />
+  </section>
+  <CtaBand />
+</Layout>

@@ -1,0 +1,7 @@
+---
+// Grey stand-in for a photo. Swap for a real <img> or <Image /> later.
+const { label = 'Image', class: cls = '' } = Astro.props;
+---
+<div class={`flex aspect-[4/3] items-center justify-center rounded-2xl bg-white/10 text-sm text-white/50 ${cls}`}>
+  {label}
+</div>

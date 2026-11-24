@@ -1,9 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+const field = 'mt-1 w-full rounded-lg border border-white/20 bg-white/5 px-4 py-3 outline-none focus:border-brand';
 ---
-<Layout title="Contact | BRAND NAME">
-  <section class="mx-auto max-w-xl px-5 py-24">
-    <h1 class="reveal font-display text-4xl font-bold">Contact us</h1>
-    <p class="mt-4 text-white/70">Form comes in the next step.</p>
+<Layout title="Contact | BRAND NAME" description="Placeholder description for the contact page.">
+  <section class="mx-auto max-w-xl px-5 py-20">
+    <h1 class="reveal font-display text-4xl font-bold md:text-5xl">Contact us</h1>
+    <p class="reveal mt-4 text-white/70">{site.phone} · {site.email}</p>
+    <!-- TODO: set action to the chosen form service (Formspree / Web3Forms) -->
+    <form class="reveal mt-10 space-y-5" method="post" action="#">
+      <label class="block">Name<input class={field} type="text" name="name" required /></label>
+      <label class="block">Company<input class={field} type="text" name="company" /></label>
+      <label class="block">Email<input class={field} type="email" name="email" required /></label>
+      <label class="block">Fleet size<input class={field} type="text" name="fleet_size" /></label>
+      <label class="block">Message<textarea class={field} name="message" rows="5" required></textarea></label>
+      <button type="submit" class="rounded-xl bg-brand px-6 py-3 font-medium text-black hover:brightness-110">Send</button>
+    </form>
   </section>
 </Layout>

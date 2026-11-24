@@ -1,4 +1,6 @@
 ---
+import { site } from '../data/site';
+import Button from './Button.astro';
 const links = [
   { href: '/services', label: 'Services' },
   { href: '/plans', label: 'Plans' },
@@ -8,9 +10,10 @@ const links = [
 ---
 <header class="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
-    <a href="/" class="font-display text-xl font-bold">BRAND NAME</a>
-    <nav class="hidden gap-8 md:flex">
+    <a href="/" class="font-display text-xl font-bold">{site.name}</a>
+    <nav class="hidden items-center gap-8 md:flex">
       {links.map((l) => <a href={l.href} class="hover:text-brand">{l.label}</a>)}
+      <Button href="/contact" class="!px-4 !py-2 text-sm">Get a quote</Button>
     </nav>
     <button id="menu-btn" class="md:hidden" aria-label="Menu" aria-expanded="false">☰</button>
   </div>

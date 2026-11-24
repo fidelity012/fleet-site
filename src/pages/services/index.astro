@@ -1,0 +1,16 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { services } from '../../data/services';
+---
+<Layout title="Services | BRAND NAME" description="Placeholder description for the services page.">
+  <section class="mx-auto max-w-6xl px-5 py-20">
+    <h1 class="reveal font-display text-4xl font-bold md:text-5xl">Services</h1>
+    <p class="reveal mt-4 max-w-2xl text-white/70">Dummy intro text for the services overview.</p>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {services.map((s) => <ServiceCard title={s.title} summary={s.summary} href={`/services/${s.slug}`} />)}
+    </div>
+  </section>
+  <CtaBand />
+</Layout>
