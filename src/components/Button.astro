@@ -1,0 +1,6 @@
+---
+const { href = '/contact', class: cls = '' } = Astro.props;
+---
+<a href={href} class={`inline-block rounded-xl bg-brand px-6 py-3 font-medium text-black transition hover:brightness-110 ${cls}`}>
+  <slot />
+</a>

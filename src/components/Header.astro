@@ -1,0 +1,29 @@
+---
+const links = [
+  { href: '/services', label: 'Services' },
+  { href: '/plans', label: 'Plans' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<header class="sticky top-0 z-50 border-b border-white/10 bg-black/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+    <a href="/" class="font-display text-xl font-bold">BRAND NAME</a>
+    <nav class="hidden gap-8 md:flex">
+      {links.map((l) => <a href={l.href} class="hover:text-brand">{l.label}</a>)}
+    </nav>
+    <button id="menu-btn" class="md:hidden" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+  <nav id="mobile-menu" class="hidden flex-col gap-4 border-t border-white/10 px-5 py-4 md:hidden">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+</header>
+<script>
+  const btn = document.getElementById('menu-btn')!;
+  const menu = document.getElementById('mobile-menu')!;
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('hidden') === false;
+    menu.classList.toggle('flex', open);
+    btn.setAttribute('aria-expanded', String(open));
+  });
+</script>
