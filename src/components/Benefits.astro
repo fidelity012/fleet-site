@@ -1,0 +1,25 @@
+---
+const { eyebrow, title, items } = Astro.props;
+const icons: Record<string, string> = {
+  shield: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z',
+  bolt: 'M13 2L4 14h7l-1 8 9-12h-7l1-8z',
+  tag: 'M3 12V4h8l10 10-8 8L3 12zM7.5 8.5h.01',
+};
+---
+<section class="bg-neutral-900 px-5 py-16 text-center">
+  <div class="mx-auto max-w-2xl">
+    <p class="reveal text-xs font-semibold uppercase tracking-wider">{eyebrow}</p>
+    <h2 class="reveal mt-4 font-display text-3xl font-bold md:text-4xl">{title}</h2>
+    <ul class="mt-10">
+      {items.map((it: any) => (
+        <li class="reveal border-b border-white/80 py-8 last:border-0">
+          <svg class="mx-auto text-white" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d={icons[it.icon] ?? icons.shield} />
+          </svg>
+          <h3 class="mt-4 font-display text-xl font-bold">{it.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed">{it.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

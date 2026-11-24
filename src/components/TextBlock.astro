@@ -1,0 +1,12 @@
+---
+// Eyebrow + heading + paragraphs, centered. Optional CTA via the "cta" slot.
+const { eyebrow, title, paragraphs = [] } = Astro.props;
+---
+<div class="mx-auto max-w-2xl px-5 py-12 text-center">
+  <p class="reveal text-xs font-semibold uppercase tracking-wider">{eyebrow}</p>
+  <h2 class="reveal mt-4 font-display text-3xl font-bold md:text-4xl">{title}</h2>
+  <div class="reveal mt-6 space-y-6 text-base leading-relaxed">
+    {paragraphs.map((p: string) => <p>{p}</p>)}
+  </div>
+  <div class="reveal mt-8 empty:hidden"><slot name="cta" /></div>
+</div>
