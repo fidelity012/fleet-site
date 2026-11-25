@@ -1,4 +1,5 @@
 ---
+import { withBase } from '../utils/url';
 import { site } from '../data/site';
 const links = [
   { href: '/services', label: 'Services' },
@@ -9,13 +10,13 @@ const links = [
 ---
 <footer class="bg-neutral-950 px-5 py-12 text-sm">
   <div class="mx-auto max-w-6xl">
-    <a href="/" class="font-display text-2xl font-bold">{site.name}</a>
+    <a href={withBase('/')} class="font-display text-2xl font-bold">{site.name}</a>
     <p class="mt-4 font-display text-lg font-bold">{site.tagline}</p>
     <ul class="mt-6 flex flex-wrap gap-3">
       {site.socials.map((s) => <li><a href={s.href} class="rounded-full border border-white/20 px-4 py-2 hover:border-brand hover:text-brand">{s.label}</a></li>)}
     </ul>
     <nav class="mt-8 flex flex-col gap-4 text-base">
-      {links.map((l) => <a href={l.href} class="hover:text-brand">{l.label}</a>)}
+      {links.map((l) => <a href={withBase(l.href)} class="hover:text-brand">{l.label}</a>)}
     </nav>
     <div class="mt-8 space-y-1">
       <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
@@ -23,8 +24,8 @@ const links = [
       <p class="pt-3">Address: {site.address}</p>
     </div>
     <nav class="mt-8 flex flex-col gap-4 text-base">
-      <a href="/privacy" class="hover:text-brand">Privacy Policy</a>
-      <a href="/terms" class="hover:text-brand">Terms of Service</a>
+      <a href={withBase('/privacy')} class="hover:text-brand">Privacy Policy</a>
+      <a href={withBase('/terms')} class="hover:text-brand">Terms of Service</a>
     </nav>
     <p class="mt-8 text-white/50">© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
   </div>
